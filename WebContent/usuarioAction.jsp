@@ -15,17 +15,17 @@ if(request.getParameter("ac").equals("adicionar")){
 	
 	Connection conn = DriverManager.getConnection(url,"root","");
 	Statement stmt = conn.createStatement();
-	String sql = "INSERT INTO usuarios(id,nome,login,senha) VALUES('',?,?,?)";
+	String sql = "INSERT INTO usuarios(id,nome,login,senha) VALUES(null,'"+nome+"','"+login+"','"+senha+"')";
 	
 	PreparedStatement smtp = conn.prepareStatement(sql);
-	
-	smtp.setString(1,nome);
-	smtp.setString(2,login);
-	smtp.setString(3,senha);
-	
+		
 	stmt.executeUpdate(sql);
 	stmt.close();
 	conn.close();
+	
+	//Redirecionar página
+	String redirectURL = "index.jsp";
+    response.sendRedirect(redirectURL);
 }
 
 
@@ -41,40 +41,49 @@ if(request.getParameter("ac").equals("atualizar")){
 	Class.forName("com.mysql.jdbc.Driver"); 
 	
 	Connection conn = DriverManager.getConnection(url,"root","");
-	Statement stmt = conn.createStatement();
-	String sql = "UPDATE usuarios SET nome=?, login=?, senha=? WHERE id=?";
+	String sql = "UPDATE usuarios SET nome='"+nome+"',login='"+login+"',senha='"+senha+"' WHERE id='"+id+"'";
 	
-	PreparedStatement smtp = conn.prepareStatement(sql);
 	
-	smtp.setString(1,nome);
-	smtp.setString(2,login);
-	smtp.setString(3,senha);
-	smtp.setInt(4,id);
+	PreparedStatement stmt = conn.prepareStatement(sql);
 	
-	stmt.executeUpdate(sql);
+	//stmt.setString(1,nome);
+	//stmt.setString(2,login);
+	//stmt.setString(3,senha);
+	//stmt.setInt(4,id);
+	
+	stmt.executeUpdate();
 	stmt.close();
 	conn.close();
+	
+	//Redirecionar página
+	String redirectURL = "index.jsp";
+    response.sendRedirect(redirectURL);
+	
 	}
 
 
 if(request.getParameter("ac").equals("rm")){
 	
 	int id = Integer.parseInt(request.getParameter("id"));
-		
+    
+	
 	//inserção no banco
 	String url = "jdbc:mysql://localhost:3306/crudjsp";
 	Class.forName("com.mysql.jdbc.Driver"); 
 	
 	Connection conn = DriverManager.getConnection(url,"root","");
-	Statement stmt = conn.createStatement();
-	String sql = "DELETE FROM 'usuarios' WHERE id= ?";
+	String sql = "DELETE FROM usuarios WHERE id="+id;
+	System.out.print(sql);
 	
-	PreparedStatement smtp = conn.prepareStatement(sql);
-	smtp.setInt(1,id);
-		
-	stmt.execute(sql);
+	PreparedStatement stmt = conn.prepareStatement(sql);
+			
+	stmt.execute();
 	stmt.close();
 	conn.close();
+	
+	//Redirecionar página
+	String redirectURL = "index.jsp";
+    response.sendRedirect(redirectURL);
 }
 
 %>

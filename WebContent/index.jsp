@@ -50,7 +50,7 @@
 		<td><%=senha %></td>
 		
 		<td>
-			<a href="editarUsuario.jsp?id=<%=id%>&nome=<%=nome%>&login=<%=login%>&senha<%=senha%>">Editar</a>
+			<a href="editarUsuario.jsp?id=<%=id%>&nome=<%=nome%>&login=<%=login%>&senha=<%=senha%>">Editar</a>
 			<a href="usuarioAction.jsp?id=<%=id%>&ac=rm">Remover</a>
 		</td>
 		
