@@ -27,7 +27,7 @@
 	String senha="";
 	String action="";
 	
-		String url = "jdbc:mysql://localhost:3606/crudjsp;create=true";
+		String url = "jdbc:mysql://localhost:3306/crudjsp";
 		Class.forName("com.mysql.jdbc.Driver"); 
 		
 		Connection conn = DriverManager.getConnection(url,"root","");
@@ -50,7 +50,8 @@
 		<td><%=senha %></td>
 		
 		<td>
-			<a href="editarUsuario.jsp?id=<%=id%>$nome=<%=nome%>&login=<%=login%>"></a>
+			<a href="editarUsuario.jsp?id=<%=id%>&nome=<%=nome%>&login=<%=login%>&senha<%=senha%>">Editar</a>
+			<a href="usuarioAction.jsp?id=<%=id%>&ac=rm">Remover</a>
 		</td>
 		
 	</tr>
