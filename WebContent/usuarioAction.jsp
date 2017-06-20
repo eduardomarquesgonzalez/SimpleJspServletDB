@@ -10,10 +10,14 @@ if(request.getParameter("ac").equals("adicionar")){
 	String senha = request.getParameter("senha");
 	
 	//inserção no banco
-	String url = "jdbc:mysql://localhost:3306/crudjsp";
+	String user = "azure";
+	String password = "6#vWHD_$";
+	String urlLocal = "jdbc:mysql://localhost:3306/crudjsp";
+	String urlAzure= "jdbc:mysql://127.0.0.1:54447/localdb";
+	
 	Class.forName("com.mysql.jdbc.Driver"); 
 	
-	Connection conn = DriverManager.getConnection(url,"root","");
+	Connection conn = DriverManager.getConnection(urlAzure,user,password);
 	Statement stmt = conn.createStatement();
 	String sql = "INSERT INTO usuarios(id,nome,login,senha) VALUES(null,'"+nome+"','"+login+"','"+senha+"')";
 	
@@ -37,10 +41,14 @@ if(request.getParameter("ac").equals("atualizar")){
 	String senha = request.getParameter("senha");
 	
 	//inserção no banco
-	String url = "jdbc:mysql://localhost:3306/crudjsp";
+	String user = "azure";
+	String password = "6#vWHD_$";
+	String urlLocal = "jdbc:mysql://localhost:3306/crudjsp";
+	String urlAzure= "jdbc:mysql://127.0.0.1:54447/localdb";	
+	
 	Class.forName("com.mysql.jdbc.Driver"); 
 	
-	Connection conn = DriverManager.getConnection(url,"root","");
+	Connection conn = DriverManager.getConnection(urlAzure,user,password);
 	String sql = "UPDATE usuarios SET nome='"+nome+"',login='"+login+"',senha='"+senha+"' WHERE id='"+id+"'";
 	
 	
@@ -68,10 +76,14 @@ if(request.getParameter("ac").equals("rm")){
     
 	
 	//inserção no banco
-	String url = "jdbc:mysql://localhost:3306/crudjsp";
+	String user = "azure";
+	String password = "6#vWHD_$";
+	String urlLocal = "jdbc:mysql://localhost:3306/crudjsp";
+	String urlAzure= "jdbc:mysql://127.0.0.1:54447/localdb";
+	
 	Class.forName("com.mysql.jdbc.Driver"); 
 	
-	Connection conn = DriverManager.getConnection(url,"root","");
+	Connection conn = DriverManager.getConnection(urlAzure,user,password);
 	String sql = "DELETE FROM usuarios WHERE id="+id;
 	System.out.print(sql);
 	

@@ -26,11 +26,15 @@
 	String login="";
 	String senha="";
 	String action="";
+	String user = "azure";
+	String password = "6#vWHD_$";
 	
-		String url = "jdbc:mysql://localhost:3306/crudjsp";
+		String urlLocal= "jdbc:mysql://localhost:3306/crudjsp";
+		String urlAzure= "jdbc:mysql://127.0.0.1:54447/localdb";
+		
 		Class.forName("com.mysql.jdbc.Driver"); 
 		
-		Connection conn = DriverManager.getConnection(url,"root","");
+		Connection conn = DriverManager.getConnection(urlAzure,user,password);		
 		Statement stmt = conn.createStatement();
 		
 		ResultSet rs = stmt.executeQuery("SELECT * FROM usuarios");
@@ -39,7 +43,6 @@
 			nome  = rs.getString("nome");
 			login = rs.getString("login");
 			senha = rs.getString("senha");
-		
 	%>	
 	
 	
