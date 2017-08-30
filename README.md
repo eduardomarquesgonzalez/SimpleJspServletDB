@@ -7,4 +7,7 @@ Neste pequeno sistema é possivel
 <h3>Editar</h3>
 <h3>Excluir</h3>
 
+<p align="center">
+  <img src="crudJSP.png" width="350"/>
+</p>
 
